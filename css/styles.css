@@ -111,6 +111,9 @@ header .logo {
   box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.315);
  position: relative;
 }
+.new-posts .new h3{
+  font-family: 'Times New Roman', Times, serif;
+}
 .new-posts .new .like{
   display: flex;
   position: absolute;
@@ -180,3 +183,45 @@ header .logo {
   background-size: cover;
   background-position: top;
 }
+
+#postList{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px 0;
+  margin-top: 100px;
+  background-image: url(/assets/p66.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.post {
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.315);
+  border-radius: 20px;
+  width: 80%;
+  height: 100px;
+  padding: 10px;
+  background-color: white;
+}
+
+#pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.page-link {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #ff8800;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: #b36500;
+}
+

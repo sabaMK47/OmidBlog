@@ -54,3 +54,70 @@ $(document).ready(function() {
         $(this).toggleClass('liked'); 
     });
 });
+
+// -----------------------------------other posts pagination------------------------------//
+
+$(document).ready(function () {
+    const postsPerPage = 10;
+    let currentPage = 1;
+    let totalPosts = 0;
+
+    function fetchPosts(page) {
+        $.ajax({
+            url: `https://jsonplaceholder.typicode.com/posts`,
+            method: 'GET',
+            success: function (data) {
+                totalPosts = data.length;
+                renderPosts(data, page);
+                renderPagination(totalPosts, page);
+            },
+            error: function (error) {
+                console.error("Error fetching posts:", error);
+            }
+        });
+    }
+
+    function renderPosts(data, page) {
+        const start = (page - 1) * postsPerPage + 6; // Start from the 7th post
+        const end = start + postsPerPage;
+        const postsToShow = data.slice(start, end);
+
+        $('#postList').empty();
+        postsToShow.forEach(post => {
+            $('#postList').append(`
+                <div class="post">
+                    <h3>${post.title}</h3>
+                    <p>${post.body}</p>
+                    <div class="like">
+                    <i class="uil uil-thumbs-up likebtn" ></i>
+                    <i class="uil uil-comment-alt"></i>
+                    </div>
+                </div>
+            `);
+        });
+    }
+
+    function renderPagination(totalPosts, currentPage) {
+        const totalPages = Math.ceil(totalPosts / postsPerPage);
+        $('#pagination').empty();
+
+        for (let i = 1; i <= totalPages; i++) {
+            $('#pagination').append(`
+                <button class="page-link" data-page="${i}">${i}</button>
+            `);
+        }
+
+        // Highlight the current page
+        $('#pagination .page-link').eq(currentPage - 1).addClass('active');
+
+        // Add click event for pagination buttons
+        $('.page-link').click(function () {
+            const page = $(this).data('page');
+            currentPage = page;
+            fetchPosts(currentPage);
+        });
+    }
+
+    // Initial fetch
+    fetchPosts(currentPage);
+});
