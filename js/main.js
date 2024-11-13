@@ -46,3 +46,11 @@ $(document).ready(function() {
 
     fetchData();
 });
+
+//--------------------------------------like button---------------------------------------//
+
+$(document).ready(function() {
+    $('.likebtn').click(function() {
+        $(this).toggleClass('liked'); 
+    });
+});

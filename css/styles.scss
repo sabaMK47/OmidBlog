@@ -123,8 +123,15 @@ header{
     gap: 10px;
     flex-wrap: wrap;
     .new{
+        position: relative;
         padding: 20px;
         border-radius: 20px;
+        .like{
+            display: flex;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
     }
     .right-news{
         width: 48%;
@@ -135,7 +142,7 @@ header{
             width: 100%;
             height: 150px;
             border: 1px solid black;
-            background-image: url(/assets/p2.jpg);
+            background-image: url(/assets/p2.jpg) !important;
         }
         #new3{
             width: 100%;
@@ -148,7 +155,6 @@ header{
         width: 43%;
         height: 308px;
         border: 1px solid black;
-        background-image: url(/assets/p1.jpg);
         background-position: bottom;
         background-size: cover;
     }
