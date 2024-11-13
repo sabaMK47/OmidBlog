@@ -1,28 +1,6 @@
 // ------ font import ----------
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-
-@mixin title-font {
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 1000;
-  font-style: normal;
-}
-
-@mixin post-title-font {
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: italic;
-}
-
-@mixin post-font {
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
 
 $font:"Bebas Neue", sans-serif;
 
@@ -42,7 +20,7 @@ header{
     gap: 50px;
     width: 100%;
     height: 60px;
-    z-index: 99;
+    z-index: 100;
     background-color: rgba(255, 255, 255, 0.349);
     .logo{
         font-family: "Bebas Neue", sans-serif;
@@ -130,3 +108,58 @@ header{
     object-fit: cover; /* Cover the entire area */
     
 }
+.main{
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    top: 100%;
+}
+
+.new-posts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    .new{
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .right-news{
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        #new2{
+            width: 100%;
+            height: 150px;
+            border: 1px solid black;
+        }
+        #new3{
+            width: 100%;
+            height: 150px;
+            border: 1px solid black;
+
+        }
+    }
+    #new1{
+        width: 43%;
+        height: 308px;
+        border: 1px solid black;
+        background-image: url(/assets/6.png);
+        background-position: bottom;
+        background-size: cover;
+    }
+    #new1::after{
+        background:linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) ;
+    }
+   
+    #new4, #new5, #new6{
+        width: 30%;
+        height: 200px;
+        border: 1px solid black;
+    }
+}
+
+

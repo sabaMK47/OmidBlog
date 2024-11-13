@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 * {
   padding: 0;
@@ -15,7 +14,7 @@ header {
   gap: 50px;
   width: 100%;
   height: 60px;
-  z-index: 99;
+  z-index: 100;
   background-color: rgba(255, 255, 255, 0.349);
 }
 header .logo {
@@ -86,4 +85,58 @@ header .logo {
   height: 500px;
   -o-object-fit: cover;
      object-fit: cover; /* Cover the entire area */
+}
+
+.main {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 100%;
+}
+
+.new-posts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.new-posts .new {
+  padding: 20px;
+  border-radius: 20px;
+}
+.new-posts .right-news {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.new-posts .right-news #new2 {
+  width: 100%;
+  height: 150px;
+  border: 1px solid black;
+}
+.new-posts .right-news #new3 {
+  width: 100%;
+  height: 150px;
+  border: 1px solid black;
+}
+.new-posts #new1 {
+  float: left;
+  width: 43%;
+  height: 308px;
+  border: 1px solid black;
+  background-image: url(/assets/59434703-Abstract-soft-flower-background-design-Stock-Photo-beauty.jpg);
+  background-size: cover;
+}
+.new-posts #new1::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+.new-posts #new4, .new-posts #new5, .new-posts #new6 {
+  width: 30%;
+  height: 200px;
+  border: 1px solid black;
 }/*# sourceMappingURL=styles.css.map */
