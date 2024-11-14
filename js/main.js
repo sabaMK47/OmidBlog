@@ -121,3 +121,25 @@ $(document).ready(function () {
     // Initial fetch
     fetchPosts(currentPage);
 });
+
+//--------------------------------- comment pop up --------------------------------------//
+
+$(document).ready(function() {
+    $('.comment-button').click(function() {
+        // Find the closest comment box that is a sibling of the clicked button and toggle its visibility
+        $(this).next('.comment-box').toggle();
+    });
+
+    $('.save-comment').click(function() {
+        // Find the closest textarea and get the comment text
+        var comment = $(this).siblings('.comment-text').val();
+        if (comment) {
+            // You can save the comment here (e.g., send it to a server or save it in local storage)
+            console.log('Comment saved:', comment); // For demonstration, just log it to the console
+            $(this).siblings('.comment-text').val(''); // Clear the textarea
+            $(this).parent('.comment-box').hide(); // Hide the comment box
+        } else {
+            alert('Please write a comment before saving.'); // Alert if the comment is empty
+        }
+    });
+});
