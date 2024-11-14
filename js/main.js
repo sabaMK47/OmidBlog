@@ -62,6 +62,27 @@ $(document).ready(function () {
     let currentPage = 1;
     let totalPosts = 0;
 
+    function renderPagination(totalPosts, currentPage) {
+        const totalPages = Math.ceil(totalPosts / postsPerPage);
+        $('#pagination').empty();
+
+        for (let i = 1; i <= totalPages; i++) {
+            $('#pagination').append(`
+                <button class="page-link" data-page="${i}">${i}</button>
+            `);
+        }
+
+        // Highlight the current page
+        $('#pagination .page-link').eq(currentPage - 1).addClass('active');
+
+        // Add click event for pagination buttons
+        $('.page-link').click(function () {
+            const page = $(this).data('page');
+            currentPage = page;
+            fetchPosts(currentPage);
+        });
+    }
+
     function fetchPosts(page) {
         $.ajax({
             url: `https://jsonplaceholder.typicode.com/posts`,
@@ -88,35 +109,24 @@ $(document).ready(function () {
                 <div class="post">
                     <h3>${post.title}</h3>
                     <p>${post.body}</p>
-                    <div class="like">
-                    <i class="uil uil-thumbs-up likebtn" ></i>
-                    <i class="uil uil-comment-alt"></i>
-                    </div>
-                </div>
+                    <div class="like-comment">
+                                <div class="like">
+                                    <i class="uil uil-thumbs-up likebtn" ></i>
+                                </div>
+                                <div class="comment">
+                                    <i class="uil uil-comment-alt comment-button"></i>
+                                    <div class="comment-box" style="display: none;">
+                                        <textarea class="comment-text" placeholder="Write your comment here..."></textarea>
+                                        <button class="save-comment">Save Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                </div>  
             `);
         });
     }
 
-    function renderPagination(totalPosts, currentPage) {
-        const totalPages = Math.ceil(totalPosts / postsPerPage);
-        $('#pagination').empty();
-
-        for (let i = 1; i <= totalPages; i++) {
-            $('#pagination').append(`
-                <button class="page-link" data-page="${i}">${i}</button>
-            `);
-        }
-
-        // Highlight the current page
-        $('#pagination .page-link').eq(currentPage - 1).addClass('active');
-
-        // Add click event for pagination buttons
-        $('.page-link').click(function () {
-            const page = $(this).data('page');
-            currentPage = page;
-            fetchPosts(currentPage);
-        });
-    }
+    
 
     // Initial fetch
     fetchPosts(currentPage);
@@ -168,3 +178,4 @@ function toggleMenu() {
     const menu = document.querySelector('.menu');
     menu.classList.toggle('active'); 
 }
+
