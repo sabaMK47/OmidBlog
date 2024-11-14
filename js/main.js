@@ -161,3 +161,10 @@ $(document).ready(function() {
         }
     });
 });
+
+//-------------------------------- menu responsive toggle--------------------------------//
+
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active'); 
+}

@@ -17,11 +17,6 @@ html,body{
   font-style: normal;
 }
 
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
 
 header {
   position: fixed;
@@ -40,7 +35,13 @@ header .logo {
   font-size: 3rem;
   margin-left: 20px;
 }
-
+.menu-icon {
+  display: none; 
+  cursor: pointer;
+  font-size: 1.5rem; 
+  position: absolute;
+  right: 20px;
+}
 .menu {
   font-family: "Bebas Neue", sans-serif;
 }
@@ -182,13 +183,10 @@ header .logo {
   background-image: url(/assets/p1.jpg);
   background-size: cover;
 }
-.new-posts .new::after {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-}
 .new-posts #new4, .new-posts #new5, .new-posts #new6 {
   width: 30%;
   height: 200px;
-}/*# sourceMappingURL=styles.css.map */
+}
 
 .new-posts #new4{
   background-image: url(/assets/p44.jpg);
@@ -382,6 +380,57 @@ footer{
 
 @media (max-width: 600px) {
   
+  .slider .title{
+    width: 90%;
+    top: 15%;
+  }
+  .slider .title h1{
+    font-size: 4rem;
+  }
+  .menu-icon {
+    display: block; 
+}
+
+.menu ul {
+    display: none; 
+    flex-direction: column; 
+    position: absolute; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    width: 100%;
+    top: 60px; 
+    left: 0; 
+    z-index: 99; 
+    text-align: center;
+}
+
+.menu.active ul {
+    display: flex; 
+}
+.main{
+  top: 65%;
+}
+.new-posts{
+  height: fit-content;
+  gap: 30px;
+}
+
+.new-posts .right-news ,.new-posts #new1,.new-posts #new4,.new-posts #new5,.new-posts #new6{
+  width: 90%;
+}
+.new-posts .right-news{
+  height: fit-content;
+  gap: 30px;
+}
+.new-posts .right-news #new2,.new-posts .right-news #new3{
+  height: 200px;
+  background-position: right;
+}
+
+#postList .post{
+  height: fit-content;
+  padding-bottom: 30px;
+}
+
   .footer-container {
       flex-direction: column;
       gap: 50px;
