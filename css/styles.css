@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html,body{
+  height: 100%;
+}
+
 header {
   position: fixed;
   display: flex;
@@ -33,7 +37,7 @@ header .logo {
   font-size: 1.2rem;
 }
 .menu ul li:hover {
-  border-bottom: 2px solid brown;
+  border-bottom: 2px solid green;
   cursor: pointer;
 }
 
@@ -92,8 +96,9 @@ header .logo {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  position: absolute;
+  position: relative;
   top: 100%;
+  min-height: 100vh;
 }
 
 .new-posts {
@@ -103,13 +108,15 @@ header .logo {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+
 }
 .new-posts .new {
   padding: 20px;
   border-radius: 20px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.315);
- position: relative;
+  position: relative;
+
 }
 .new-posts .new h3{
   font-family: 'Times New Roman', Times, serif;
@@ -217,7 +224,7 @@ header .logo {
 .page-link {
   margin: 0 5px;
   padding: 5px 10px;
-  background-color: #ff8800;
+  background-color: green;
   color: white;
   border: none;
   border-radius: 50px;
@@ -226,18 +233,6 @@ header .logo {
 
 .page-link:hover {
   background-color: #b36500;
-}
-
-footer{
-  width: 100%;
-  height: 50vh;
-  background-color: #b36500;
-  position: relative;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-
 }
 
 .comment {
@@ -275,6 +270,108 @@ border: 1px solid green;}
   border: none;
   padding: 5px;
   margin: auto 0;
-color: white;
-font-family: ;
+ color: white;
+}
+
+footer{
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(58, 54, 54);
+  position: absolute;
+  text-align: center;
+  padding: 50px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 450%;
+
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.subscription-box, .quick-links, .social-media {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  gap: 20px;
+}
+
+.quick-links h3{
+  text-decoration: underline;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.subscription-box form {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 70px;
+  
+  
+}
+
+.subscription-box input[type="email"] {
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.subscription-box button {
+  padding: 10px;
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-links li {
+  margin: 5px 0;
+}
+
+.quick-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.quick-links a:hover {
+  text-decoration: underline;
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+}
+
+.icons a {
+  margin: 5px;
+}
+
+.icons i{
+  font-size: xx-large;
+  color: green;
+
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  
+  .footer-container {
+      flex-direction: column;
+      gap: 50px;
+  }
 }

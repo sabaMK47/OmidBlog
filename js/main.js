@@ -143,3 +143,21 @@ $(document).ready(function() {
         }
     });
 });
+
+//------------------------------ header on scroll-----------------------------------------//
+
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) { 
+            $('#header').css({
+                'background-color': 'rgb(58, 54, 54)',
+                'color': 'white'
+            });
+        } else {
+            $('#header').css({
+                'background-color': 'rgba(255, 255, 255, 0.349)',
+                'color': 'black' 
+            });
+        }
+    });
+});
