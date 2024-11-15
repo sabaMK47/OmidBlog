@@ -136,22 +136,56 @@ $(document).ready(function () {
 
 $(document).ready(function() {
     $('.comment-button').click(function() {
-        // Find the closest comment box that is a sibling of the clicked button and toggle its visibility
-        $(this).next('.comment-box').toggle();
+        $(this).siblings('.comment-box').toggle();
     });
 
     $('.save-comment').click(function() {
-        // Find the closest textarea and get the comment text
-        var comment = $(this).siblings('.comment-text').val();
-        if (comment) {
-            // You can save the comment here (e.g., send it to a server or save it in local storage)
-            console.log('Comment saved:', comment); // For demonstration, just log it to the console
-            $(this).siblings('.comment-text').val(''); // Clear the textarea
-            $(this).parent('.comment-box').hide(); // Hide the comment box
-        } else {
-            alert('Please write a comment before saving.'); // Alert if the comment is empty
-        }
+        var commentBox = $(this).closest('.comment-section');
+        var commentText = commentBox.find('.comment-text').val();
+        var commentsDisplay = commentBox.find('.comments-display');
+        var showCommentsButton = commentBox.find('.show-comments');
+
+        if (commentText) {
+            // Save the comment
+            var comments = commentsDisplay.data('comments') || [];
+            comments.push(commentText);
+            commentsDisplay.data('comments', comments);
+            console.log('Comment saved:', commentText);
+            commentBox.find('.comment-text').val('');
+            commentBox.find('.comment-box').hide();
+            toggleShowCommentsButton(comments, showCommentsButton);
+         } else {
+             alert('Please write a comment before saving.');
+         }
     });
+
+    $('.show-comments').click(function() {
+        var commentBox = $(this).closest('.comment-section');
+        var comments = commentBox.find('.comments-display').data('comments') || [];
+        displayCommentsInModal(comments, commentBox);
+        commentBox.find('.comments-modal').show(); // Show the modal
+    });
+
+    $('.close-modal').click(function() {
+        $(this).closest('.comments-modal').hide(); // Hide the modal when close button is clicked
+    });
+
+    function displayCommentsInModal(comments, commentBox) {
+        var commentsDisplay = commentBox.find('.comments-display');
+        commentsDisplay.empty();
+        comments.forEach(function(comment) {
+            commentsDisplay.append('<div class="comment-item">' + comment + '</div>');
+        });
+    }
+
+    function toggleShowCommentsButton(comments, button) {
+        // Show the button only if there is at least one comment
+        if (comments.length > 0) {
+            button.show(); 
+        } else {
+            button.hide(); 
+        }
+    }
 });
 
 //------------------------------ header on scroll-----------------------------------------//
