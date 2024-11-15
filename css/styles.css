@@ -113,8 +113,6 @@ header .logo {
 
 .main {
   width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   position: relative;
   top: 100%;
@@ -387,7 +385,7 @@ footer{
   bottom: 0;
   right: 0;
   left: 0;
-  top: 530%;
+  top: 520%;
 
 }
 .footer-container {
@@ -529,8 +527,12 @@ footer{
   padding-bottom: 30px;
 }
 
-  .footer-container {
-      flex-direction: column;
-      gap: 50px;
-  }
+footer{
+  top: 580%;
+}
+
+.footer-container {
+  flex-direction: column;
+  gap: 50px;
+}
 }
