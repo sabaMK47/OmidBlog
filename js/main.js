@@ -61,6 +61,7 @@ $(document).ready(function () {
     const postsPerPage = 10;
     let currentPage = 1;
     let totalPosts = 0;
+    let allPosts = []; // Store all posts for searching
 
     function renderPagination(totalPosts, currentPage) {
         const totalPages = Math.ceil(totalPosts / postsPerPage);
@@ -79,7 +80,7 @@ $(document).ready(function () {
         $('.page-link').click(function () {
             const page = $(this).data('page');
             currentPage = page;
-            fetchPosts(currentPage);
+            renderPosts(allPosts, currentPage); // Render posts based on the filtered data
         });
     }
 
@@ -88,8 +89,9 @@ $(document).ready(function () {
             url: `https://jsonplaceholder.typicode.com/posts`,
             method: 'GET',
             success: function (data) {
-                totalPosts = data.length;
-                renderPosts(data, page);
+                allPosts = data; // Store all posts
+                totalPosts = allPosts.length;
+                renderPosts(allPosts, page);
                 renderPagination(totalPosts, page);
             },
             error: function (error) {
@@ -99,7 +101,7 @@ $(document).ready(function () {
     }
 
     function renderPosts(data, page) {
-        const start = (page - 1) * postsPerPage + 6; // Start from the 7th post
+        const start = (page - 1) * postsPerPage; // Adjusted start index
         const end = start + postsPerPage;
         const postsToShow = data.slice(start, end);
 
@@ -126,7 +128,14 @@ $(document).ready(function () {
         });
     }
 
-    
+    // Search functionality
+    $('#searchInput').on('input', function() {
+        const query = $(this).val().toLowerCase();
+        const filteredPosts = allPosts.filter(post => post.title.toLowerCase().includes(query));
+        totalPosts = filteredPosts.length; // Update total posts based on filtered data
+        renderPosts(filteredPosts, 1); // Render filtered posts on the first page
+        renderPagination(totalPosts, 1); // Update pagination for filtered results
+    });
 
     // Initial fetch
     fetchPosts(currentPage);
